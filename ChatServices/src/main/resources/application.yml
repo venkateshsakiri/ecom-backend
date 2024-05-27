@@ -1,0 +1,16 @@
+
+spring:
+  datasource:
+    username: root
+    password: admin123
+    url: jdbc:mysql://localhost:3306/chat
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+   hibernate:
+      ddl-auto: update
+   show-sql: true
+logging:
+  file:
+    name: mylog.log
+  level:
+    root: INFO  
