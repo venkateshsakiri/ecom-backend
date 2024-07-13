@@ -2,6 +2,7 @@ package com.chatServices.service.impls.Admin;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +40,7 @@ public class ProductServiceImpls implements ProductService{
 		product.setImg(productDto.getByteImg());
 		product.Amount = productDto.amount;
 		product.categoryName = productDto.categoryName;
+		product.brandName = productDto.brandName;
 //		product.img = productDto.img.getBytes();
 		System.out.println(productDto);
 		Long updatedCategoryId = Long.parseLong(productDto.updatedUategoryId); 
@@ -60,5 +62,15 @@ public class ProductServiceImpls implements ProductService{
 	public List<Product> getAllProductsByCategoryName(String category) {
 		List<Product> products = productRepository.findByProductsByCategoryName(category);		
 		return products;
+	}
+
+
+	@Override
+	public Optional<Product> getProductById(Long id) {
+		Optional<Product> product = productRepository.findById(id);
+		if(product.isPresent()) {
+			return product;
+		}
+		return null;
 	}
 }

@@ -2,6 +2,7 @@ package com.chatServices.controller.Admin;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -75,6 +76,15 @@ public class ProductController {
 	public ResponseEntity<List<Product>> getAllProductsByCategory(@PathVariable String category){
 		List<Product> products = productService.getAllProductsByCategoryName(category);
 		return ResponseEntity.ok(products);
+	}
+	
+	@GetMapping("/product/{id}")
+	public ResponseEntity<?> getProductById(@PathVariable Long id){
+		Optional<Product> product = productService.getProductById(id);
+		if(product.isPresent()) {
+			return ResponseEntity.ok(product);
+		}
+		return ResponseEntity.ok("product not found!!");
 	}
 
 }

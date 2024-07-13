@@ -2,6 +2,8 @@ package com.chatServices.entity;
 
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 import com.chatServices.dto.ProductDto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -18,6 +20,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+
 @Entity
 @Data
 @Table(name = "product")
@@ -26,13 +29,26 @@ public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
-	
+
 	public String name;
 	
 	public Long price;
 	
 	public String Amount;
 	
+	public String brandName;
+	
+	
+//	public AddressList address;
+	
+//	public AddressList getAddress() {
+//		return address;
+//	}
+//
+//	public void setAddress(AddressList address) {
+//		this.address = address;
+//	}
+
 	public String getAmount() {
 		return Amount;
 	}
@@ -107,6 +123,14 @@ public class Product {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
 	}
 	
 	

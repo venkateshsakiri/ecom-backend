@@ -20,6 +20,8 @@ public class ProductDto {
 	
 	public String categoryName;
 	
+	public String brandName;
+	
 	public String getAmount() {
 		return amount;
 	}
